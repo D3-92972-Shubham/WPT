@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <style>
+        #div1 {
+            width: 65%;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.506);
+            justify-self: center;
+            margin-top: 25px;
+            --bs-text-opacity: 1;
+            display: flex;
+        }
+
+        .note {
+            width: 200px;
+            height: 300px;
+            margin-top: 25px;
+            display: inline;
+            justify-content: space-evenly;
+        }
+
+        .inputtype {
+            background: transparent;
+
+            border: none;
+
+            outline: none;
+
+        }
+    </style>
+    <title>Sticky</title>
+</head>
+
+<body style="background-color: dimgray;">
+    <header>
+        <div id="div1" class="rounded-4">
+            <h2 style="margin-left: 10px; margin-top: 15px; color:white;">HTML5Sticky</h2>
+            <div style="margin-left: 10px; margin-top: 20px;">
+                <div>
+                    <img src="./add.png" style="width: 30px;">
+                    <img src="./deletebig.png" style="width: 30px;">
+                    <img src="./decrease.png" style="width: 30px;">
+                    <img src="./increase.png" style="width: 30px;">
+                </div>
+            </div>
+            <div class="ms-auto" style="margin-right: 20px; margin-top: 15px;">
+                <img src="./twitter.png">
+                <button type="button" class="btn btn-primary" style="justify-items: end;">$Donate</button>
+            </div>
+        </div>
+    </header>
+    <!-- <section class="container">
+        <input type="text" class="form-control note" style="background-color: aqua; " placeholder="Enter text here">
+        <input type="date"><input type="time">
+        <input type="text" class="form-control note" style="background-color: orange; " placeholder="Enter text here">
+        <input type="text" class="form-control note" style="background-color: chartreuse; "
+            placeholder="Enter text here">
+        <input type="text" class="form-control note" style="background-color: coral; " placeholder="Enter text here">
+        <input type="text" class="form-control note" style="background-color: beige; " placeholder="Enter text here">
+        <input type="text" class="form-control note" style="background-color: blueviolet; " placeholder="Enter text here">
+        <input type="text" class="form-control note" style="background-color: cornflowerblue; " placeholder="Enter text here">
+        <input type="text" class="form-control note" style="background-color: darkseagreen; " placeholder="Enter text here">
+        <input type="text" class="form-control note" style="background-color: dodgerblue; " placeholder="Enter text here">
+        <input type="text" class="form-control note" style="background-color: gold; " placeholder="Enter text here">
+    </section> -->
+    <!-- <section class="image-container" style="justify-content: space-between;">
+        <img src="./Yellow_Sticky_Note_PNG_Clip_Art-2383.png" class="rounded float-start" alt="..."
+            style="width: 200px;" class="note">
+        <img src="./Sticky_Note_Yellow_PNG_Clip_Art-2381.png" class="rounded float-start" alt="..."
+            style="width: 200px;" class="note">
+        <img src="./Yellow_Sticky_Note_PNG_Clip_Art-2383.png" class="rounded float-start" alt="..."
+            style="width: 200px;" class="note">
+        <img src="./Sticky_Note_Yellow_PNG_Clip_Art-2381.png" class="rounded float-start" alt="..."
+            style="width: 200px;" class="note">
+        <img src="./Yellow_Sticky_Note_PNG_Clip_Art-2383.png" class="rounded float-start" alt="..."
+            style="width: 200px;" class="note">
+        <img src="./Sticky_Note_Yellow_PNG_Clip_Art-2381.png" class="rounded float-start" alt="..."
+            style="width: 200px;" class="note">
+        <img src="./Yellow_Sticky_Note_PNG_Clip_Art-2383.png" class="rounded float-start" alt="..."
+            style="width: 200px;" class="note">
+        <img src="./Sticky_Note_Yellow_PNG_Clip_Art-2381.png" class="rounded float-start" alt="..."
+            style="width: 200px;" class="note">
+    </section> -->
+    <div class="container" >
+        <div style="display: flex; justify-content: space-around;">
+            <div
+                style="width: 250px; height: 300px; background-image:url('/Sticky_Note_Yellow_PNG_Clip_Art-2381.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                <div class="notepad-container">
+                    <input class="inputtype" type="date" style=" margin-top: 50px; margin-left: 20px;">
+                    <input class="inputtype" type="time" style="margin-left: 20px;">
+                    <textarea class="notepad-textarea inputtype" placeholder="Type your text here..."
+                        style="margin-left: 20px;"></textarea>
+                </div>
+
+            </div>
+
+            <div
+                style="width: 250px; height: 300px; background-image:url('/Sticky_Note_Yellow_PNG_Clip_Art-2381.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                <div class="notepad-container">
+                    <input class="inputtype" type="date" style=" margin-top: 50px; margin-left: 20px;">
+                    <input class="inputtype" type="time" style="margin-left: 20px;">
+                    <textarea class="notepad-textarea inputtype" placeholder="Type your text here..."
+                        style="margin-left: 20px;"></textarea>
+                </div>
+            </div>
+
+            <div
+                style="width: 250px; height: 300px; background-image:url('/Sticky_Note_Yellow_PNG_Clip_Art-2381.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                <div class="notepad-container">
+                    <input class="inputtype" type="date" style=" margin-top: 50px; margin-left: 20px;">
+                    <input class="inputtype" type="time" style="margin-left: 20px;">
+                    <textarea class="notepad-textarea inputtype" placeholder="Type your text here..."
+                        style="margin-left: 20px;"></textarea>
+                </div>
+
+            </div>
+            <div
+                style="width: 250px; height: 300px; background-image:url('/Sticky_Note_Yellow_PNG_Clip_Art-2381.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                <div class="notepad-container">
+                    <input class="inputtype" type="date" style=" margin-top: 50px; margin-left: 20px;">
+                    <input class="inputtype" type="time" style="margin-left: 20px;">
+                    <textarea class="notepad-textarea inputtype" placeholder="Type your text here..."
+                        style="margin-left: 20px;"></textarea>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+
+</html>
