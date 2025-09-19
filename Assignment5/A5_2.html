@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let i
+        let msg
+        do {
+            i = window.prompt("Enter positive number")
+            if (i > 0) {
+                msg = window.prompt("Enter the message")
+                window.alert("Check console for repeated messages!")
+                console.log('Repeated message')
+                let count = 1
+                while (count <= i) {
+                    console.log(count + ('.' + msg))
+                    count++
+                }
+            } else {
+                window.alert("Enter coorect positive number")
+            }
+        } while (i < 0)
+    </script>
+</body>
+
+</html>

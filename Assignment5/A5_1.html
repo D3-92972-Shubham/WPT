@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let msg = "Enter positive number"
+        let n1
+        let n2
+        let n3
+        let n4
+        do {
+            n1 = window.prompt("Enter first positive number")
+            if (n1 > 0) {
+                do {
+                    n2 = window.prompt("Enter second positive number")
+                    if (n2 > 0) {
+                        do {
+                            n3 = window.prompt("Enter third positive number")
+                            if (n3 > 0) {
+                                n4 = n1 > n2 ? n1 > n3 ? n1 : n3 : n2 > n3 ? n2 : n3
+                                window.alert("Largest number is : " + n4)
+                            } else {
+                                window.alert(msg)
+                            }
+                        } while (n3 < 0)
+                    } else {
+                        window.alert(msg)
+                    }
+                } while (n2 < 0)
+            } else {
+                window.alert(msg)
+            }
+        } while (n1 < 0)
+
+    </script>
+</body>
+
+</html>
