@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Names</title>
+</head>
+<body>
+    <h2>Employee Names Registration</h2>
+
+    <label for="empName">Enter Employee Name:</label>
+    <input type="text" id="empName">
+    <button id="addBtn">Add Name</button>
+    <button id="displayBtn">Display Sorted Names</button>
+
+    <h3>Sorted Names:</h3>
+    <ul id="nameList"></ul>
+
+    <script>
+        const employees = [];
+
+        const addBtn = document.getElementById('addBtn');
+        const displayBtn = document.getElementById('displayBtn');
+        const nameInput = document.getElementById('empName');
+        const nameList = document.getElementById('nameList');
+
+        addBtn.addEventListener('click', function() {
+            const name = nameInput.value.trim();
+            
+            if (!name) {
+                alert("Please enter a name.");
+                return;
+            }
+
+            if (employees.length >= 6) {
+                alert("You have already entered 6 names.");
+                nameInput.value = "";
+                return;
+            }
+
+            employees.push(name);
+            alert(`Name "${name}" added successfully.`);
+            nameInput.value = "";
+        });
+
+        displayBtn.addEventListener('click', function() {
+            if (employees.length === 0) {
+                alert("No names to display.");
+                return;
+            }
+
+            // Sort the names
+            const sortedNames = [...employees].sort();
+
+            // Clear previous list
+            nameList.innerHTML = "";
+
+            // Display sorted names
+            sortedNames.forEach(name => {
+                const li = document.createElement('li');
+                li.textContent = name;
+                nameList.appendChild(li);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunbeam Registration Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <center>
+            <img src="./new_logo.png" alt="Sunbeam Logo">
+            <h2>Sunbeam Registration Form</h2>
+        </center>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Az5Bt3zUtiM?si=0NbWlcOnBpdOuGSI"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </td>
+                <td>
+                    <form id="registrationForm">
+                        <table>
+                            <tr>
+                                <td><b>Name:</b></td>
+                                <td><input type="text" id="name"></td>
+                            </tr>
+                            <tr>
+                                <td><b>BirthDate:</b></td>
+                                <td><input type="date" id="birthdate"></td>
+                            </tr>
+                            <tr>
+                                <td><b>Email:</b></td>
+                                <td><input type="email" id="email"></td>
+                            </tr>
+                            <tr>
+                                <td><b>Password:</b></td>
+                                <td><input type="password" id="password"></td>
+                            </tr>
+                            <tr>
+                                <td><label><b>Address :</b></label></td>
+                                <td><textarea id="address"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><b>Gender:</b></td>
+                                <td>
+                                    <input type="radio" name="gender" value="Male">Male
+                                    <input type="radio" name="gender" value="Female">Female
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Upload Photo:</b></td>
+                                <td><input type="file" id="photo" name="filename"></td>
+                            </tr>
+                            <tr>
+                                <td><label><b>Select your course:</b></label></td>
+                                <td>
+                                    <select id="course">
+                                        <option value="">Select course</option>
+                                        <option value="C">C</option>
+                                        <option value="C++">C++</option>
+                                        <option value="Java">Java</option>
+                                        <option value="C#">C#</option>
+                                        <option value=".Net">.Net</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Skill Set:</b></td>
+                                <td>
+                                    <input type="checkbox" name="skill" value="Java">Java
+                                    <input type="checkbox" name="skill" value="CPP">CPP
+                                    <input type="checkbox" name="skill" value="OS">OS
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="submit" value="Register">
+                                    <input type="reset" value="Cancel">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- JavaScript Validation (Vanilla JS) -->
+    <script>
+        const form = document.getElementById('registrationForm');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get values
+            const name = document.getElementById('name').value.trim();
+            const birthdate = document.getElementById('birthdate').value;
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const address = document.getElementById('address').value.trim();
+            const gender = document.querySelector('input[name="gender"]:checked');
+            const course = document.getElementById('course').value;
+            const skills = Array.from(document.querySelectorAll('input[name="skill"]:checked')).map(el => el.value);
+            const photo = document.getElementById('photo').files[0];
+
+            let errors = [];
+
+            // Name validation
+            if (!name || !/^[A-Za-z]{1,10}$/.test(name)) {
+                errors.push("Name must be alphabets only (max 10 chars).");
+            }
+
+            // Birthdate validation
+            if (!birthdate) {
+                errors.push("Birthdate is required.");
+            } else {
+                const birth = new Date(birthdate);
+                const today = new Date();
+                const age = today.getFullYear() - birth.getFullYear();
+                const monthDiff = today.getMonth() - birth.getMonth();
+                const dayDiff = today.getDate() - birth.getDate();
+                if (birth >= today) {
+                    errors.push("Birthdate must be in the past.");
+                } else if (age < 18 || (age === 18 && (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)))) {
+                    errors.push("You must be at least 18 years old.");
+                }
+            }
+
+            // Password validation
+            if (!password || password.length <= 8 || !password.includes("#") || !/\d/.test(password)) {
+                errors.push("Password must be >8 chars, contain '#' and at least one digit.");
+            }
+
+            // Other mandatory fields
+            if (!email) errors.push("Email is required.");
+            if (!address) errors.push("Address is required.");
+            if (!gender) errors.push("Gender is required.");
+            if (!course) errors.push("Course selection is required.");
+            if (skills.length === 0) errors.push("At least one skill must be selected.");
+            if (!photo) errors.push("Photo upload is required.");
+
+            if (errors.length > 0) {
+                alert(errors.join("\n"));
+                return false;
+            }
+
+            // Save to session storage
+            sessionStorage.setItem('name', name);
+            sessionStorage.setItem('birthdate', birthdate);
+            sessionStorage.setItem('email', email);
+            sessionStorage.setItem('password', password);
+            sessionStorage.setItem('address', address);
+            sessionStorage.setItem('gender', gender.value);
+            sessionStorage.setItem('course', course);
+            sessionStorage.setItem('skills', skills.join(', '));
+            sessionStorage.setItem('photo', photo.name);
+
+            alert("Registration successful!");
+            form.reset();
+        });
+    </script>
+
+    <!-- jQuery version -->
+    <script>
+        $(document).ready(function () {
+            $('#registrationForm').submit(function (e) {
+                e.preventDefault();
+                let errors = [];
+
+                const name = $('#name').val().trim();
+                const birthdate = $('#birthdate').val();
+                const email = $('#email').val().trim();
+                const password = $('#password').val();
+                const address = $('#address').val().trim();
+                const gender = $('input[name="gender"]:checked').val();
+                const course = $('#course').val();
+                const skills = $('input[name="skill"]:checked').map(function () { return this.value; }).get();
+                const photo = $('#photo')[0].files[0];
+
+                // Name validation
+                if (!name || !/^[A-Za-z]{1,10}$/.test(name)) errors.push("Name must be alphabets only (max 10 chars).");
+
+                // Birthdate validation
+                if (!birthdate) errors.push("Birthdate is required.");
+                else {
+                    const birth = new Date(birthdate);
+                    const today = new Date();
+                    const age = today.getFullYear() - birth.getFullYear();
+                    const monthDiff = today.getMonth() - birth.getMonth();
+                    const dayDiff = today.getDate() - birth.getDate();
+                    if (birth >= today) errors.push("Birthdate must be in the past.");
+                    else if (age < 18 || (age === 18 && (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)))) errors.push("You must be at least 18 years old.");
+                }
+
+                // Password validation
+                if (!password || password.length <= 8 || !password.includes("#") || !/\d/.test(password))
+                    errors.push("Password must be >8 chars, contain '#' and at least one digit.");
+
+                if (!email) errors.push("Email is required.");
+                if (!address) errors.push("Address is required.");
+                if (!gender) errors.push("Gender is required.");
+                if (!course) errors.push("Course selection is required.");
+                if (skills.length === 0) errors.push("At least one skill must be selected.");
+                if (!photo) errors.push("Photo upload is required.");
+
+                if (errors.length > 0) {
+                    alert(errors.join("\n"));
+                    return false;
+                }
+
+                // Save to session storage
+                sessionStorage.setItem('name', name);
+                sessionStorage.setItem('birthdate', birthdate);
+                sessionStorage.setItem('email', email);
+                sessionStorage.setItem('password', password);
+                sessionStorage.setItem('address', address);
+                sessionStorage.setItem('gender', gender);
+                sessionStorage.setItem('course', course);
+                sessionStorage.setItem('skills', skills.join(', '));
+                sessionStorage.setItem('photo', photo.name);
+
+                alert("Registration successful! (via jQuery)");
+                $(this)[0].reset();
+            });
+        });
+    </script>
+</body>
+
+</html>
