@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+</head>
+<body>
+    <h1 align="center">Calculator</h1>
+
+    <table align="center" border="1" cellpadding="5">
+        <tr>
+            <td><label for="num1">Enter First Number:</label></td>
+            <td><input type="number" id="num1"></td>
+        </tr>
+        <tr>
+            <td><label for="num2">Enter Second Number:</label></td>
+            <td><input type="number" id="num2"></td>
+        </tr>
+        <tr>
+            <td><label for="result">Result:</label></td>
+            <td><input type="text" id="result" readonly></td>
+        </tr>
+        <tr>
+            <td><button onclick="calculate('+')">Addition</button></td>
+            <td><button onclick="calculate('-')">Subtraction</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="calculate('*')">Multiplication</button></td>
+            <td><button onclick="calculate('/')">Division</button></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button onclick="clearFields()">Clear</button>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        function calculate(operator) {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var resultBox = document.getElementById("result");
+
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Please enter valid numbers!");
+                return;
+            }
+
+            var result;
+            if (operator === '+') result = num1 + num2;
+            else if (operator === '-') result = num1 - num2;
+            else if (operator === '*') result = num1 * num2;
+            else if (operator === '/') {
+                if (num2 === 0) {
+                    alert("Division by zero not allowed!");
+                    return;
+                }
+                result = num1 / num2;
+            }
+
+            resultBox.value = result;
+        }
+
+        function clearFields() {
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            document.getElementById("result").value = "";
+        }
+    </script>
+</body>
+</html>
